@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sart-Marketing and Sales Accelerator</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Sart website" name="keywords">
+    <meta content="Sart website" name="description">
+
+    <!-- Favicon -->
+    <link href="./Sartimages/Sart.jpg" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./sart.css">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <img src="./Sartimages/SART-logo-png-tiny.png" alt="" width="150" height="80" class="pb-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="admindashboard.html" class="nav-item nav-link active">Upload Events</a>
+                    <a href="admincareer.html" class="nav-item nav-link">Careers</a>
+                    <a href="admincontactus.html" class="nav-item nav-link">Contact us</a>
+                    <a href="adminblog.html" class="nav-item nav-link">upload blogs</a>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+            <div class="row py-5">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-4 text-white animated zoomIn">Events</h1>
+
+                    <a href="" class="h5 text-white">Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <div class="dashbord-main">
+        <section class="upload-section">
+            <h2>Upload Events</h2>
+            <form id="uploadEventsForm" onsubmit="postEvent(event)">
+                <div class="input-group">
+                    <label for="eventTitle" class="upload-label">Title</label>
+                    <input type="text" id="eventTitle" class="upload-input" required>
+                </div>
+                <div class="input-group">
+                    <label for="eventDescription" class="upload-label">Description</label>
+                    <textarea id="eventDescription" class="upload-input" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="eventFiles" class="upload-label">Upload Files</label>
+                    <input type="file" id="eventFiles" class="upload-input" accept="image/*" required>
+                    <p>*Supported up to 2 MB</p>
+                </div>
+                <button type="submit" class="upload-button">Submit</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="dashbord-main">
+        <section class="upload-section">
+            <h2>Upload Upcoming Events</h2>
+            <form id="uploadUpcomingEventsForm" onsubmit="postUpcomingEvent(event)">
+                <div class="input-group">
+                    <label for="upcomingEventTitle" class="upload-label">Title</label>
+                    <input type="text" id="upcomingEventTitle" class="upload-input" required>
+                </div>
+                <div class="input-group">
+                    <label for="upcomingEventDescription" class="upload-label">Description</label>
+                    <textarea id="upcomingEventDescription" class="upload-input" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="upcomingEventFiles" class="upload-label">Upload Files</label>
+                    <input type="file" id="upcomingEventFiles" class="upload-input" accept="image/*" required>
+                    <p>*Supported up to 2 MB</p>
+                </div>
+                <button type="submit" class="upload-button">Submit</button>
+            </form>
+        </section>
+    </div>
+
+
+    <div class="dashbord-main">
+        <section class="upload-section">
+            <h2>Upload Image to Gallery</h2>
+            <form id="upload-form" onsubmit="uploadgallery(event)">
+                <div class="form-group">
+                    <label for="image">Choose Image:</label>
+                    <input type="file" class="form-control-file" id="uploadgalleryfile" name="image" accept="image/*"
+                        required>
+                </div>
+                <br>
+                <button type="submit" class="upload-button">Upload</button>
+            </form>
+            <div id="success-message" class="alert alert-success mt-3" style="display:none;">
+                Image successfully uploaded!
+            </div>
+            <div id="error-message" class="alert alert-danger mt-3" style="display:none;">
+                There was an error uploading the image.
+            </div>
+
+        </section>
+    </div>
+
+
+
+    <div class="container mt-5">
+        <h2>Upcoming Events</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Images</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="events-table-body">
+                <!-- Data will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3"
+                            placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+
+    <!-- Team Start -->
+
+    <!-- Team End -->
+
+
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gx-5 my-0 py-0">
+                <div class="col-lg-4 col-md-6 footer-about mb-0">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center text-center bg-white p-4 h-100 w-100">
+                        <a href="index.html" class="footer-brand p-0 m-0">
+                            <img src="./Sartimages/SART LOGO.svg" alt="">
+                        </a>
+                        <p class="mt-3 mb-4 text-dark">Resources for startups with market-ready products towards
+                            marketing and
+                            sales acceleration.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 col-md-12 pt-3 mb-3">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Our Locations</h3>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Road%2C+Sunnyvale%2C+CA+94085"
+                                        target="_blank" class="text-white">
+                                        440 N Wolfe Road Sunnyvale, CA-94085 (USA)</a>
+                                </p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/place/JM+CORPORATE+SERVICES+LLP/@13.0533152,80.2448801,17z/data=!4m10!1m2!2m1!1s14%2F2+3rd+Floor,+Gemini+Parsn+Complex+Kodambakkam+High+Road+Nungambakkam,+Chennai+600024!3m6!1s0x3a5266306f5ad1f1:0x3189f927a78bfca5!8m2!3d13.0533152!4d80.2496437!15sClcxNC8yIDNyZCBGbG9vciwgR2VtaW5pIFBhcnNuIENvbXBsZXggS29kYW1iYWtrYW0gSGlnaCBSb2FkIE51bmdhbWJha2thbSwgQ2hlbm5haSA2MDAwMjSSARNib29ra2VlcGluZ19zZXJ2aWNl4AEA!16s%2Fg%2F11rh_33jx8?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank" class="text-white">
+                                        14/2 3rd Floor, Gemini Parsn Complex Kodambakkam High Road Nungambakkam,
+                                        Chennai-600 024</a>
+                                </p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/place/Talentturbo+Pvt.ltd/@8.1763052,77.4074583,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f162035626db:0x32c3533469492d75!8m2!3d8.1763052!4d77.4100332!16s%2Fg%2F11sthcbc39?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank" class="text-white">
+                                        20C-1C Asaripallam Road Opposite to Concordia School, Nagercoil- 629 001</a>
+                                </p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/place/SART+Accelerator+Pvt+Ltd/@8.1584018,77.3602887,17z/data=!4m14!1m7!3m6!1s0x3b04fb0036f80279:0xe2d551eb513bd5a!2sSART+Accelerator+Pvt+Ltd!8m2!3d8.1584018!4d77.3651596!16s%2Fg%2F11y6s6j8wp!3m5!1s0x3b04fb0036f80279:0xe2d551eb513bd5a!8m2!3d8.1584018!4d77.3651596!16s%2Fg%2F11y6s6j8wp?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank" class="text-white">
+                                        8/3 Manoji Complex, Santhapuram Main Road, Santhapuram Post -629201</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-3 mb-3">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Quick Links</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="./index.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="./about.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                <a class="text-light mb-2" href="./service.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="./contact.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Contact</a>
+                                <a class="text-light mb-2" href="./careers.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Careers</a>
+                            </div>
+                            <!-- <div class="d-flex mb-2 mt-5">
+                                <i class="bi bi-envelope-open text-primary me-2"></i>
+                                <p class="mb-0">info@sartaccel.com</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+1 (833) 353-7773</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+91 46527-96604</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+91 78457 46598</p>
+                            </div> -->
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-3 mb-3">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Get In Touch</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <!-- <a class="text-light mb-2" href="./ourpartners.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Our partners</a>
+                                <a class="text-light mb-2" href="./portfolio.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Portfolio</a>
+
+                                <a class="text-light mb-2" href="./events.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Events</a>
+
+                                <a class="text-light mb-2" href="./blog.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Blogs</a>
+                                <a class="text-light mb-2" href="./testimonial.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Testimonial</a> -->
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-envelope-open text-primary me-2"></i>
+                                    <p class="mb-0"><a class="text-white"
+                                            href="mailto:info@sartaccel.com">info@sartaccel.com</a></p>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-telephone text-primary me-2"></i>
+                                    <p class="mb-0">
+                                        <a href="tel:+9104652796604" class="text-white">+91 4652-796 604</a>
+                                    </p>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-telephone text-primary me-2"></i>
+                                    <p class="mb-0">
+                                        <a href="tel:+918190016665" class="text-white">+91 81900 16665</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-3">
+                                <a class="btn btn-primary btn-square me-2" href="https://x.com/sartaccel"
+                                    target="_blank"><i class="fa-brands fa-x-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="https://www.facebook.com/sartaccel"
+                                    target="_blank"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2"
+                                    href="https://www.linkedin.com/company/sartaccel/posts/?feedView=all"
+                                    target="_blank"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square" href="https://www.instagram.com/sartaccel/"
+                                    target="_blank"><i class="fab fa-instagram fw-normal"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white py-2" style="background: #061429;">
+        <div class="container text-center">
+            <div class="row justify-content-end">
+                <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <p class="mb-0">&copy; SART. All
+                            Rights Reserved.
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Developed by <a class="text-white border-bottom" href="https://enterkeysolutions.com/"
+                                target="_blank">EnterKey Solutions</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script src="./config.js"></script>
+
+</body>
+
+
+<script>
+
+    // Maximum file size (2 MB in bytes)
+    const MAX_FILE_SIZE = 2 * 1024 * 1024;
+
+    // Function to validate file size
+    function validateFileSize(files) {
+        for (let i = 0; i < files.length; i++) {
+            if (files[i].size > MAX_FILE_SIZE) {
+                alert(`Error: ${files[i].name} exceeds the size limit of 2 MB.`);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Function to handle event form submission
+    const postEvent = (event) => {
+        event.preventDefault();
+
+        const form = document.getElementById("uploadEventsForm");
+        let title = document.getElementById("eventTitle").value;
+        let description = document.getElementById("eventDescription").value;
+        let files = document.getElementById("eventFiles").files;
+
+        if (files.length > 0 && !validateFileSize(files)) return; // Validate file size
+
+        // Create formData and append data
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        for (let i = 0; i < files.length; i++) {
+            formData.append("images", files[i]);
+        }
+
+        fetch(`${config.apiUrl}/event`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // alert("Uploaded successfully");
+                // location.reload();
+                form.reset();
+            })
+            .catch((error) => console.error('Error:', error));
+    };
+
+    // Function to handle upcoming event form submission
+    const postUpcomingEvent = (event) => {
+        event.preventDefault();
+
+        const form = document.getElementById("uploadUpcomingEventsForm");
+        let title = document.getElementById("upcomingEventTitle").value;
+        let description = document.getElementById("upcomingEventDescription").value;
+        let files = document.getElementById("upcomingEventFiles").files;
+
+        if (files.length > 0 && !validateFileSize(files)) return; // Validate file size
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        for (let i = 0; i < files.length; i++) {
+            formData.append("images", files[i]);
+        }
+
+        fetch(`${config.apiUrl}/upcommingevent`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert("Uploaded successfully");
+                location.reload();
+                form.reset();
+            })
+            .catch((error) => console.error('Error:', error));
+    };
+
+    // Function to handle gallery upload
+    const uploadgallery = (event) => {
+        event.preventDefault();
+
+        const form = document.getElementById("upload-form");
+        let files = document.getElementById("uploadgalleryfile").files;
+
+        if (files.length > 0 && !validateFileSize(files)) return; // Validate file size
+
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            formData.append("images", files[i]);
+        }
+
+        fetch(`${config.apiUrl}/uploadgallery`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert("Uploaded successfully");
+                location.reload();
+                form.reset();
+            })
+            .catch((error) => console.error('Error:', error));
+    };
+
+    // DOMContentLoaded event listener to fetch upcoming events and delete events
+    document.addEventListener('DOMContentLoaded', function () {
+        const apiUrl = `${config.apiUrl}/getUpcommingevent`;
+        const tableBody = document.getElementById('events-table-body');
+
+        // Fetch data from API and populate table
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(event => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${event.title}</td>
+                    <td>${event.description}</td>
+                    <td>${event.images.map(img => `<img src="${img}" alt="Image" style="width: 100px; height: auto;">`).join('<br>')}</td>
+                    <td>
+                        <button class="btn btn-danger delete-button" data-id="${event.id}">Delete</button>
+                    </td>
+                `;
+                    tableBody.appendChild(row);
+                });
+
+                // Add event listeners for delete buttons
+                document.querySelectorAll('.delete-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const id = this.getAttribute('data-id');
+                        deleteEvent(id);
+                    });
+                });
+            })
+            .catch(error => console.error('Error fetching events:', error));
+
+        // Function to delete an event
+        function deleteEvent(id) {
+            fetch(`${config.apiUrl}/deleteUpcommingEvent/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Remove the row from the table
+                        const row = document.querySelector(`button[data-id="${id}"]`).closest('tr');
+                        row.remove();
+                        alert('Event deleted successfully.');
+                    } else {
+                        alert('Failed to delete the event.');
+                    }
+                })
+                .catch(error => console.error('Error deleting event:', error));
+        }
+    });
+
+
+</script>
+
+</html>

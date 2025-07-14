@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sart-Marketing and Sales Accelerator</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Sart website" name="keywords">
+    <meta content="Sart website" name="description">
+
+    <!-- Favicon -->
+    <link href="./Sartimages/Sart.jpg" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/chatbot.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Chat Bot Start-->
+    <a href="javascript:void(0);" class="chat-bot" onclick="toggleChatContainer()">
+        <img src="img/chat icon .svg" alt="chat-bot" class="chat-bot-icon">
+    </a>
+    <!-- Chat Container -->
+    <div id="Chat-Container" class="chat-container">
+        <div class="chat-header">
+            <img src="img/chat icon .svg" alt="chat-icon" class="chat-icon">
+            <div class="p">SART-Bot</div>
+            <button class="chat-btn" onclick="closeChatContainer()" style="font-size: 25px;">&times;</button>
+        </div>
+        <div id="chat-box">
+            <div class="message bot-message">Hello! I’m here to help you learn about our company. Ask me anything!</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type your question here..." onkeydown="handleEnter(event)">
+            <button class="chat-btn" onclick="sendMessage()" style="margin-right: 7px;"><i
+                    class="fa-regular fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <!-- Chat Bot End-->
+
+    <!-- Topbar Start -->
+    <!-- <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar & Carousel Start -->
+    <div class="container-fluid position-relative p-0" id="">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <img src="./Sartimages/SART-logo-png-tiny.png" alt="" width="150" height="80" class="pb-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown">About Us</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="about.html" class="dropdown-item ">Our Vision</a>
+                            <a href="portfolio.html" class="dropdown-item ">Portfolio</a>
+                            <a href="ourpartners.html" class="dropdown-item ">Our partners</a>
+                            <a href="testimonial.html" class="dropdown-item ">Testimonial</a>
+                            <a href="events.html" class="dropdown-item ">Events</a>
+                            <a href="blog.html" class="dropdown-item ">Blogs</a>
+                        </div>
+                    </div>
+                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="careers.html" class="nav-item nav-link">Careers</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <!-- <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5> -->
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Marketing and Sales
+                                Accelerator</h1>
+                            <!-- <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
+                                Quote</a>
+                            <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact
+                                Us</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Resources for accelerating startups
+                                with market-ready products
+                            </h1>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img class="w-100" src="img/carousel-3.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Equity based investment
+                            </h1>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Navbar & Carousel End -->
+
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3"
+                            placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+
+    <!-- Facts Start -->
+    <!-- <div class="container-fluid facts py-5 pt-lg-0">
+        <div class="container py-5 pt-lg-0">
+            <div class="row gx-0">
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
+                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
+                        style="height: 150px;">
+                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
+                            style="width: 60px; height: 60px;">
+                            <i class="fa fa-users text-primary"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white mb-0">Happy Clients</h5>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">12345</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4"
+                        style="height: 150px;">
+                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2"
+                            style="width: 60px; height: 60px;">
+                            <i class="fa fa-check text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-primary mb-0">Projects Done</h5>
+                            <h1 class="mb-0" data-toggle="counter-up">12345</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
+                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
+                        style="height: 150px;">
+                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
+                            style="width: 60px; height: 60px;">
+                            <i class="fa fa-award text-primary"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white mb-0">Win Awards</h5>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">12345</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Facts Start -->
+
+    <!-- About Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-primary text-uppercase">GOAL OF SART ACCELERATOR</h5>
+                        <h1 class="mb-0">Startups Struggle at the Pre-Revenue or Early Revenue Stage</h1>
+                    </div>
+                    <p class="mb-4">SART Accelerator is dedicated to enabling startups with market-ready products
+                        through
+                        marketing and sales acceleration.</p>
+                    <div class="row g-0 mb-3">
+                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Structured Business Frameworks
+                            </h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Compliance and Monitoring</h5>
+                        </div>
+                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Equity-based investment</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Network for timely exit</h5>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
+                    </div>
+                    <a href="contact.html" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn"
+                        data-wow-delay="0.9s">Schedule Appointment</a>
+                </div>
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"
+                            src="./Sartimages/mansuit.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5 order-2 order-md-1" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"
+                            src="./Sartimages/mansuit22.avif" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="col-lg-7 order-1 order-md-2">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-primary text-uppercase">Marketing and Sales Accelerator</h5>
+                        <h1 class="mb-0">Accelerate Your Market Success</h1>
+                    </div>
+                    <p class="mb-4">We provides essential resources for startups with
+                        market-ready products, focusing on accelerating your marketing and sales efforts. We offer
+                        expert guidance and strategic support to enhance your market presence and drive growth. Our
+                        program is designed to help you break through marketing and sales barriers, ensuring your
+                        products gain strong market recognition. With our tailored acceleration solutions, you will have
+                        access to the tools and knowledge needed to succeed.
+                        <br>
+                        <br>
+                        <br>
+                        We are dedicated to helping you achieve
+                        your business goals, providing comprehensive support every step of the way. Collaborate with us
+                        to
+                        leverage our expertise and experience, and watch your startup thrive in the competitive market
+                        landscape. Our commitment is to your success, ensuring that you have everything you need to
+                        reach new heights.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features Start -->
+
+    <!-- Features Start -->
+
+
+    <!-- Service Start -->
+
+    <!-- Service End -->
+
+
+
+
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Why choose us
+                </h5>
+                <h1 class="mb-0">Dedicated Customer Services</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="blog-item bg-light rounded overflow-hidden h-100">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
+
+                        </div>
+                        <div class="p-4">
+
+                            <h4 class="mb-3">Expertise in Startup Growth</h4>
+                            <p> We have a deep understanding of the challenges
+                                and opportunities founders of startups face.
+                                Our team of seasoned professionals has extensive experience in marketing, sales, and
+                                business development, providing startups with the guidance and support needed to
+                                succeed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                    <div class="blog-item bg-light rounded overflow-hidden h-100">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/blog-2.jpg" alt="">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="mb-3">End-to-End Support</h4>
+                            <p>During the product launch and customer acquisition phase, we offer comprehensive support
+                                for
+                                that phase of the product life cycle. Our services are designed to transform innovative
+                                ideas into market-ready products, ensuring that startups have everything they need to
+                                thrive.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
+                    <div class="blog-item bg-light rounded overflow-hidden h-100">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="mb-3">Strategic Seed Funding</h4>
+                            <p>
+                                We provide strategic seed funding to give startups the financial boost they need to
+                                accelerate growth. Our investment goes beyond capital; we become partners in your
+                                journey, committed to driving your success.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="blog-item bg-light rounded overflow-hidden h-100">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/blog-4.jpg" alt="">
+
+                        </div>
+                        <div class="p-4">
+
+                            <h4 class="mb-3">Collaborative Approach</h4>
+                            <p>We believe in building strong partnerships with our clients. Through a Memorandum of
+                                Understanding (MOU), we take a collaborative approach, treating your product as our own
+                                and working tirelessly to achieve your business goals.
+
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                    <div class="blog-item bg-light rounded overflow-hidden h-100">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="./Sartimages/endddd.jpg" alt="">
+
+                        </div>
+                        <div class="p-4">
+
+                            <h4 class="mb-3">Focus on Long-Term Success</h4>
+                            <p>
+                                We don't just aim for short-term gains; we focus on building a sustainable and scalable
+                                business model for your startup. Our goal is to ensure your long-term success and
+                                continued growth in the market.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
+                    <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="mb-3">Strategic Seed Funding</h4>
+                            <p>
+                                We provide strategic seed funding to give startups the financial boost they need to accelerate growth. Our investment goes beyond capital; we become partners in your journey, committed to driving your success.
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Blog Start -->
+
+    <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">About Us
+                </h5>
+                <h4 class="">We dedicated to helping startups break through marketing and sales barriers, ensuring their
+                    products gain strong market recognition</h4>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"
+                            src="./Sartimages/dedicatedwork.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="section-title  pb-3 mb-4">
+                        <h3 class="mb-0">Looking ahead to 2034, our ambitious vision encompasses</h3>
+                    </div>
+                    <h5 class="mb-3 d-flex">
+                        <i class="fa fa-check text-primary me-3"></i>
+                        <div>
+                            <span style="font-weight: 800;">Empowering 1,000 CEOs</span>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We strive to mentor and support
+                            1,000 entrepreneurial leaders, equipping them with the skills and knowledge needed to drive
+                            their ventures to success.
+                        </div>
+
+                    </h5>
+
+                    <h5 class="mb-3 d-flex">
+                        <i class="fa fa-check text-primary me-3"></i>
+                        <div>
+                            <span style="font-weight: 800;">Creating 100,000 Employment Opportunities </span>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Our goal is
+                            to facilitate the creation of 100,000 new jobs, contributing to economic development and
+                            providing meaningful work across various sectors.
+                        </div>
+                    </h5>
+
+                    <h5 class="mb-3 d-flex">
+                        <i class="fa fa-check text-primary me-3"></i>
+                        <div>
+                            <span style="font-weight: 800;">Raising $100 Million in Capital</span> <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We aim to secure $100
+                            million in investment through accredited investors, fueling innovation and growth for our
+                            portfolio companies and ensuring they have the resources to thrive.
+                        </div>
+
+
+                    </h5>
+
+                    <h5 class="mb-3 d-flex">
+                        <i class="fa fa-check text-primary me-3"></i>
+                        <div>
+                            <span style="font-weight: 800;">Achieving a $2 Billion Valuation</span> <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We envision
+                            transforming our collective efforts into a remarkable $2 billion valuation, reflecting the
+                            substantial impact and success of our initiatives.
+                        </div>
+
+
+                    </h5>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+    <!-- sart -->
+    <img src="./Sartimages/new one.png" alt="" width="300" height="200"
+        class="d-flex justify-content-center align-items-center sart-logo mx-auto">
+
+    <!-- <div class="container-fluid">
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <div class="text-center">
+                <h1>Our Portfolio Companies</h1>
+            </div>
+        </div>
+    </div> -->
+    <!-- Full Screen Search End -->
+    <!-- About Start -->
+    <!-- About End -->
+    <!-- Team Start -->
+    <!-- <div class="container-fluid py-3 wow fadeInUp mx-auto" data-wow-delay="0.1s">
+        <div class="container py-lg-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.3s">
+                    <a href="https://enterkeysolutions.com/" class="image-home-link-wrapper w-inline-block"
+                        target="_blank">
+                        <img src="./Sartimages/Frame 33.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.6s">
+                    <a href="https://www.talentturbo.in/" class="image-home-link-wrapper w-inline-block"
+                        target="_blank">
+                        <img src="./Sartimages/Frame 34.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.9s">
+                    <a href="https://setld.app/" class="image-home-link-wrapper w-inline-block" target="_blank">
+                        <img src="./Sartimages/Frame 35.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.3s">
+                    <a href="https://www.simplego.in/" aria-current="page"
+                        class="image-home-link-wrapper w-inline-block w--current" target="_blank">
+                        <img src="./Sartimages/Frame 36.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.6s">
+                    <a class="image-home-link-wrapper w-inline-block">
+                        <img src="./Sartimages/Frame 37.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.9s">
+                    <a href="https://www.truckergig.com/" class="image-home-link-wrapper w-inline-block"
+                        target="_blank">
+                        <img src="./Sartimages/Frame 38.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.3s">
+                    <a href="https://www.carbify.io/" class="image-home-link-wrapper w-inline-block" target="_blank">
+                        <img src="./Sartimages/Frame 39.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.6s">
+                    <a href="https://www.talentturbo.us/" aria-current="page"
+                        class="image-home-link-wrapper w-inline-block w--current" target="_blank">
+                        <img src="./Sartimages/Frame 40.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow slideInUp mx-auto" data-wow-delay="0.9s">
+                    <a href="https://tiipstr.com/" class="image-home-link-wrapper w-inline-block" target="_blank">
+                        <img src="./Sartimages/Frame 43.png" alt="" width="350px" height="350px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+    <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
+                <h1 class="mb-0">We offer tailored solutions to meet your unique needs and ensure business growth.
+                </h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center ">
+                      
+                        <h4 class="mb-3">Lead Acquisition</h4>
+                        <p class="m-0">
+                            We provides comprehensive customer acquisition services
+                            designed to help businesses attract and convert new customers. Our approach includes
+                            leveraging digital marketing strategies such as SEO, PPC, and social media campaigns to
+                            drive traffic and engagement.
+                        </p>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center ">
+                     
+                        <h4 class="mb-3">Revenue Flow
+                        </h4>
+                        <p class="m-0">
+                            Our mission is to drive significant revenue growth for your business. By leveraging our
+                            expertise and innovative strategies, we create a revenue stream that fuels your financial
+                            success.
+                        </p>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center ">
+                       
+                        <h4 class="mb-3">Business Consultancy
+                        </h4>
+                        <p class="m-0">
+                            We offer expert guidance to enhance your business performance by leveraging the knowledge
+                            and skills of our field specialists. Our team is dedicated to providing strategic insights
+                            and practical solutions tailored to your specific needs, ensuring measurable improvements
+                            and sustainable growth.
+                        </p>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center ">
+                     
+                        <h4 class="mb-3">Market Analysis</h4>
+                        <p class="m-0">We offer comprehensive market analysis services to help businesses make informed
+                            strategic decisions. By examining industry trends, customer preferences, and competitive
+                            landscapes, SART equips companies with valuable insights into their market dynamics.
+
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center ">
+                       
+                        <h4 class="mb-3">Financial Projections</h4>
+                        <p class="m-0">
+                            We offers expert financial projection services to help
+                            businesses plan for the future with confidence. Our team of skilled analysts develops
+                            detailed financial forecasts, including projected income statements, balance sheets, and
+                            cash flow statements. By analyzing historical data and market trends, we create accurate and
+                            realistic financial models tailored to each client's unique needs.
+
+                        </p>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+
+
+    <!-- Vendor Start -->
+    <div class="container-fluid wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container pb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel d-flex justify-content-center align-items-center flex-nowrap">
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Carbify Logo.png" alt="" height="75" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/SimpleGo Taxi logo.png" alt="" height="120" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Enterkey-solution-Upscale.png" alt="" height="75" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/JM.png" alt="" height="75" class="vendor-img w-75">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/New-Talentturbo-Training-logo png.png" alt="" height="75"
+                            class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Tiipstr logo.png" alt="" height="75" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Talent-turbo-internet-of-humans-logo.png" alt="" height="75"
+                            class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Setld original logo.png" alt="" height="75" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Transitress-logo.png" alt="" height="75" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Truckergig-Upscale.png" alt="" height="150" class="vendor-img">
+                    </div>
+                    <div class="vendor-item d-flex justify-content-center align-items-center">
+                        <img src="./Sartimages/Q2.png" alt="" height="90" class="vendor-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gx-5 my-0 py-0">
+                <div class="col-lg-4 col-md-6 footer-about mb-0">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center text-center bg-white p-4 h-100 w-100">
+                        <a href="index.html" class="footer-brand p-0 m-0">
+                            <img src="./Sartimages/SART LOGO.svg" alt="">
+                        </a>
+                        <p class="mt-3 mb-4 text-dark">Resources for startups with market-ready products towards
+                            marketing and
+                            sales acceleration.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 col-md-12 pt-3 mb-3">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Our Locations</h3>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Road%2C+Sunnyvale%2C+CA+94085"
+                                        target="_blank" class="text-white">
+                                        440 N Wolfe Road Sunnyvale, CA-94085 (USA)</a>
+                                </p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/place/JM+CORPORATE+SERVICES+LLP/@13.0533152,80.2448801,17z/data=!4m10!1m2!2m1!1s14%2F2+3rd+Floor,+Gemini+Parsn+Complex+Kodambakkam+High+Road+Nungambakkam,+Chennai+600024!3m6!1s0x3a5266306f5ad1f1:0x3189f927a78bfca5!8m2!3d13.0533152!4d80.2496437!15sClcxNC8yIDNyZCBGbG9vciwgR2VtaW5pIFBhcnNuIENvbXBsZXggS29kYW1iYWtrYW0gSGlnaCBSb2FkIE51bmdhbWJha2thbSwgQ2hlbm5haSA2MDAwMjSSARNib29ra2VlcGluZ19zZXJ2aWNl4AEA!16s%2Fg%2F11rh_33jx8?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank" class="text-white">
+                                        14/2 3rd Floor, Gemini Parsn Complex Kodambakkam High Road Nungambakkam,
+                                        Chennai-600 024</a>
+                                </p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/place/Talentturbo+Pvt.ltd/@8.1763052,77.4074583,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f162035626db:0x32c3533469492d75!8m2!3d8.1763052!4d77.4100332!16s%2Fg%2F11sthcbc39?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank" class="text-white">
+                                        20C-1C Asaripallam Road Opposite to Concordia School, Nagercoil- 629 001</a>
+                                </p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">
+                                    <a href="https://www.google.com/maps/place/SART+Accelerator+Pvt+Ltd/@8.1584018,77.3602887,17z/data=!4m14!1m7!3m6!1s0x3b04fb0036f80279:0xe2d551eb513bd5a!2sSART+Accelerator+Pvt+Ltd!8m2!3d8.1584018!4d77.3651596!16s%2Fg%2F11y6s6j8wp!3m5!1s0x3b04fb0036f80279:0xe2d551eb513bd5a!8m2!3d8.1584018!4d77.3651596!16s%2Fg%2F11y6s6j8wp?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank" class="text-white">
+                                        8/3 Manoji Complex, Santhapuram Main Road, Santhapuram Post -629201</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-3 mb-3">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Quick Links</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="./index.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="./about.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                <a class="text-light mb-2" href="./service.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="./contact.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Contact</a>
+                                <a class="text-light mb-2" href="./careers.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Careers</a>
+                            </div>
+                            <!-- <div class="d-flex mb-2 mt-5">
+                                <i class="bi bi-envelope-open text-primary me-2"></i>
+                                <p class="mb-0">info@sartaccel.com</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+1 (833) 353-7773</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+91 46527-96604</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+91 78457 46598</p>
+                            </div> -->
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-3 mb-3">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Get In Touch</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <!-- <a class="text-light mb-2" href="./ourpartners.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Our partners</a>
+                                <a class="text-light mb-2" href="./portfolio.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Portfolio</a>
+
+                                <a class="text-light mb-2" href="./events.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Events</a>
+
+                                <a class="text-light mb-2" href="./blog.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Blogs</a>
+                                <a class="text-light mb-2" href="./testimonial.html"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Testimonial</a> -->
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-envelope-open text-primary me-2"></i>
+                                    <p class="mb-0"><a class="text-white"
+                                            href="mailto:info@sartaccel.com">info@sartaccel.com</a></p>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-telephone text-primary me-2"></i>
+                                    <p class="mb-0">
+                                        <a href="tel:+9104652796604" class="text-white">+91 4652-796 604</a>
+                                    </p>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-telephone text-primary me-2"></i>
+                                    <p class="mb-0">
+                                        <a href="tel:+918190016665" class="text-white">+91 81900 16665</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-3">
+                                <a class="btn btn-primary btn-square me-2" href="https://x.com/sartaccel"
+                                    target="_blank"><i class="fa-brands fa-x-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="https://www.facebook.com/sartaccel"
+                                    target="_blank"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2"
+                                    href="https://www.linkedin.com/company/sartaccel/posts/?feedView=all"
+                                    target="_blank"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square" href="https://www.instagram.com/sartaccel/"
+                                    target="_blank"><i class="fab fa-instagram fw-normal"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white py-2" style="background: #061429;">
+        <div class="container text-center">
+            <div class="row justify-content-end">
+                <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <p class="mb-0">&copy; SART. All
+                            Rights Reserved.
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Developed by <a class="text-white border-bottom" href="https://enterkeysolutions.com/"
+                                target="_blank">
+                                EnterKey Solutions
+                            </a>
+                        </p>
+                        <a href="admin.html" class="nav-item nav-link">
+                            <i class="fa fa-user-tie me-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
